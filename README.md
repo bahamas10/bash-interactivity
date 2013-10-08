@@ -76,7 +76,6 @@ Exports
 
 - `args`
 - `parr`
-- `_parr` (`parr` bash completion)
 
 ### Bash Completion
 
