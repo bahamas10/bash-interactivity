@@ -28,6 +28,31 @@ args() {
 	echo
 }
 
+# Limit the number of columns printed to terminal size
+# or 80 if size cannot be determined
+#
+# $ cat file.txt
+# some really long line
+# some short line
+# $ cat file.txt | limitcolumns 20
+# some really long li>
+# some short line
+limitcolumns() {
+	local cols=$1
+	local red=$(tput setaf 1)
+	local reset=$(tput sgr0)
+	cols=${cols:-$COLUMNS}
+	cols=${cols:-$(tput cols)}
+	cols=${cols:-80}
+	awk "
+	{
+		s = \$0;
+		if (length(s) > $cols)
+			s = substr(\$0, 0, $cols - 1) \"$red>$reset\";
+		print s
+	}"
+}
+
 # Print a bash array by name
 #
 # This uses `eval`, as that is the only way to reference an array

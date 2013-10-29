@@ -24,6 +24,21 @@ cd'ing into a file instead of a directory
     ~ $ cdir
     ~/dev/something $
 
+### `limitcolumns`
+
+Limit the number of columns printed to terminal size or 80 if size cannot be
+determined
+
+    $ cat file.txt
+    some really long line
+    some short line
+    $ cat file.txt | limitcolumns 20
+    some really long li>
+    some short line
+
+- `$1` - the number of columns to limit the output to, defaults to terminal
+width, falling back on `80`
+
 ### `parr`
 
 Print a bash array by name
