@@ -85,9 +85,4 @@ parr() {
 	done
 }
 
-# bash completion for parr
-_parr() {
-	local word=${COMP_WORDS[COMP_CWORD]}
-	COMPREPLY=($(compgen -A variable "$word"))
-}
-complete -F _parr parr
+complete -A arrayvar parr
