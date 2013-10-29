@@ -90,6 +90,7 @@ Exports
 ### Functions
 
 - `args`
+- `limitcolumns`
 - `parr`
 
 ### Bash Completion
